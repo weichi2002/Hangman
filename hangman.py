@@ -38,7 +38,7 @@ class HangmanGame:
         self.__board = ["_" for i in range(len(self.__secret))]
 
         self.__guess = 5
-        self.__guessed = []
+        self.guessed = []
 
     def __str__(self):
         return str(self.__board)
@@ -64,7 +64,7 @@ class HangmanGame:
             
     def check_letter_already_guessed(self, letter):
         
-        for item in self.__guessed:
+        for item in self.guessed:
             if item == letter:
                 return True
 
@@ -86,7 +86,7 @@ class HangmanGame:
     def process_letter_guess(self, letter):
 
         letter = letter.lower()
-        self.__guessed.append(letter)
+        self.guessed.append(letter)
 
         if letter in self.__secret:
             
@@ -147,6 +147,7 @@ def main():
             if hg.check_letter_already_guessed(guess):
                 print()
                 print("You have already guessed this letter: " + guess + "")
+                print(f"You have guessed {hg.guessed}")
                 print("Press enter to continue: ")
                 input()
                 
